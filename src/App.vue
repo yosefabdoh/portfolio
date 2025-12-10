@@ -13,6 +13,8 @@ const navLinks = [
   { text: 'Education', href: '#education' },
   { text: 'Projects', href: '#projects' },
   { text: 'References', href: '#references' },
+  { text: 'Awards', href: '#awards' },
+  { text: 'Volunteering', href: '#volunteering' },
   { text: 'Contact', href: '#contact' },
 ]
 
@@ -133,6 +135,29 @@ const references = [
     name: 'D. Khalid ALBuraihy',
     title: 'Head of Management Information Systems Department',
     org: 'Queen Arwa University',
+  },
+]
+
+const awards = [
+  {
+    title: 'Winner of Development Idea',
+    org: "TEDxSana'a",
+    date: '2020',
+    description:
+      "Winner of Development ideas competition for sponsors | Baader | TEDxSana'a | It's Time 2020",
+    link: 'https://www.youtube.com/watch?v=zS1omDbnWkM',
+    linkText: 'Watch on YouTube',
+  },
+]
+
+const volunteering = [
+  {
+    role: 'Volunteer Member',
+    org: 'VHO - Volunteer Hub Organization',
+    description:
+      'Active member contributing to community development and organizational initiatives.',
+    link: 'https://www.vho-volunteerhub.org/',
+    linkText: 'Visit Website',
   },
 ]
 
@@ -453,6 +478,107 @@ const scrollTo = (href: string) => {
                 <p class="text-xs text-muted-foreground">{{ ref.org }}</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Awards -->
+      <section id="awards" class="mb-32 scroll-mt-24">
+        <h2
+          v-motion-slide-visible-once-bottom
+          class="mb-12 text-3xl font-bold tracking-tight sm:text-4xl"
+        >
+          Awards
+        </h2>
+        <div class="grid gap-6 md:grid-cols-1">
+          <div
+            v-for="(award, index) in awards"
+            :key="index"
+            class="rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/40"
+            v-motion-slide-visible-once-bottom
+          >
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
+              <h3 class="text-xl font-bold">{{ award.title }}</h3>
+              <span
+                class="mt-2 sm:mt-0 rounded-full border border-border px-2 py-0.5 text-xs font-medium text-muted-foreground"
+              >
+                {{ award.date }}
+              </span>
+            </div>
+            <p class="mb-1 text-sm font-semibold text-primary">{{ award.org }}</p>
+            <p class="mb-4 text-muted-foreground">{{ award.description }}</p>
+            <a
+              :href="award.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center text-sm font-medium text-primary hover:underline"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="mr-2"
+              >
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              {{ award.linkText }}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Volunteering -->
+      <section id="volunteering" class="mb-32 scroll-mt-24">
+        <h2
+          v-motion-slide-visible-once-bottom
+          class="mb-12 text-3xl font-bold tracking-tight sm:text-4xl"
+        >
+          Volunteering
+        </h2>
+        <div class="grid gap-6 md:grid-cols-1">
+          <div
+            v-for="(vol, index) in volunteering"
+            :key="index"
+            class="rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/40"
+            v-motion-slide-visible-once-bottom
+          >
+            <h3 class="text-xl font-bold mb-1">{{ vol.role }}</h3>
+            <p class="mb-2 text-sm font-semibold text-primary">{{ vol.org }}</p>
+            <p class="mb-4 text-muted-foreground">{{ vol.description }}</p>
+            <a
+              :href="vol.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center text-sm font-medium text-primary hover:underline"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="mr-2"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                ></path>
+              </svg>
+              {{ vol.linkText }}
+            </a>
           </div>
         </div>
       </section>
