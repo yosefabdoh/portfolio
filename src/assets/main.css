@@ -34,6 +34,11 @@
 
     --radius: 1rem;
     --card-rgb: 255, 255, 255;
+
+    /* Performance Variables */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
@@ -71,6 +76,7 @@
 
 html {
   @apply scroll-smooth;
+  scroll-padding-top: 2rem;
 }
 
 body {
@@ -86,6 +92,8 @@ body {
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  will-change: transform, box-shadow;
+  contain: layout style paint;
 }
 
 .dark .glass-card {
@@ -98,6 +106,7 @@ body {
   @apply backdrop-blur-lg transition-all duration-500;
   background: rgba(255, 255, 255, 0.7);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  will-change: backdrop-filter;
 }
 
 .dark .glass-nav {
@@ -185,4 +194,37 @@ body {
 /* Maintain primary color for accents even on hover */
 .dark .card-hover:hover .text-primary {
   color: hsl(var(--primary)) !important;
+}
+
+/* Performance Optimized Tailwind Components */
+@layer components {
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-primary/20;
+    will-change: transform, box-shadow;
+  }
+
+  .fast-transition {
+    transition-duration: var(--transition-fast);
+  }
+
+  .normal-transition {
+    transition-duration: var(--transition-normal);
+  }
+
+  .slow-transition {
+    transition-duration: var(--transition-slow);
+  }
+}
+
+/* Performance Optimizations */
+@layer utilities {
+  .motion-safe * {
+    animation-duration: inherit !important;
+    transition-duration: inherit !important;
+  }
+
+  .motion-reduce * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
