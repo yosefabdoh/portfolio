@@ -74,7 +74,7 @@ const delay = (row: number, col: number) => row * 55 + col * 30
 
 <style scoped>
 .board {
-  --cols: 5.25rem minmax(0, 1.45fr) minmax(0, 1.25fr) minmax(0, 1.25fr) 10.5rem 28px;
+  --cols: 5.25rem minmax(0, 1.45fr) minmax(0, 1.25fr) minmax(0, 1.25fr) minmax(11.5rem, 1fr);
   background: var(--board);
   color: var(--board-ink);
   border-radius: 4px;
@@ -296,10 +296,28 @@ const delay = (row: number, col: number) => row * 55 + col * 30
       #0b1014;
   }
 
+  /* The hover arrow floats inside the Status tile, so the tiles run to the board's edge. */
+  .row {
+    position: relative;
+  }
+
+  .row > .status {
+    padding-inline-end: 44px;
+  }
+
   .row > .go {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: 14px;
+    height: auto;
+    min-height: 0;
     padding: 0;
     background: transparent;
-    justify-content: center;
+  }
+
+  .row > .go :deep(svg) {
+    width: 22px;
+    height: 22px;
   }
 
   .row :deep(.flap) {
@@ -324,7 +342,7 @@ const delay = (row: number, col: number) => row * 55 + col * 30
 
 @media screen and (max-width: 980px) {
   .board {
-    --cols: 4.5rem minmax(0, 1.4fr) minmax(0, 1fr) 9.5rem 24px;
+    --cols: 4.5rem minmax(0, 1.4fr) minmax(0, 1fr) minmax(11rem, 1fr);
   }
 
   .c-stack {
