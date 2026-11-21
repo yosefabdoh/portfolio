@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-21T22:05:00Z",
+  "title": "Design System: yosefabdoh.com",
+  "extensions": {
+    "colorMeta": {
+      "concrete": { "role": "neutral", "displayName": "Concrete", "canonical": "#e6e7e3" },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#1d252c" },
+      "board-slate": { "role": "secondary", "displayName": "Board Slate", "canonical": "#1f2a33" },
+      "signal-yellow": { "role": "primary", "displayName": "Signal Yellow", "canonical": "#f5b800" },
+      "lamp-go": { "role": "tertiary", "displayName": "Lamp Green", "canonical": "#3fc27a" },
+      "lamp-wait": { "role": "tertiary", "displayName": "Lamp Amber", "canonical": "#f2a33a" },
+      "lamp-done": { "role": "tertiary", "displayName": "Lamp Grey", "canonical": "#8b98a2" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The name in the hero only." },
+      "headline": { "displayName": "Section heading", "purpose": "One per section, after a yellow direction tile." },
+      "title": { "displayName": "Case title", "purpose": "Project names in Selected work." },
+      "body": { "displayName": "Body", "purpose": "Running text, facts, job points." },
+      "body-arabic": { "displayName": "Body (Arabic)", "purpose": "All Arabic text; taller line height, no negative tracking." },
+      "label": { "displayName": "Label", "purpose": "Board column labels, fact labels, footer." }
+    },
+    "shadows": [
+      { "name": "board", "value": "0 1px 0 rgb(255 255 255 / 0.04) inset, 0 18px 40px -24px rgb(16 24 31 / 0.55)", "purpose": "Lifts the flight board off the concrete ground." },
+      { "name": "frame", "value": "0 24px 48px -32px rgb(16 24 31 / 0.45)", "purpose": "Screenshot frames in case studies." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "All state transitions and the flap drop." },
+      { "name": "flap-appear", "value": "rotateX(90deg) to 0, 420ms, staggered 55ms per row and 30ms per column, doubled on first load", "purpose": "The one entrance: board cells flip in once." },
+      { "name": "flap-switch", "value": "fold away 140ms, drop in 260ms, per cell", "purpose": "Language toggle flips every board cell to the other script." },
+      { "name": "hover-step", "value": "translateY(-1px) on hover, translateY(1px) on press, 160ms", "purpose": "Signs (buttons)." }
+    ],
+    "breakpoints": [
+      { "name": "board-compact", "value": "980px", "purpose": "Hide the Built with column." },
+      { "name": "hero-stack", "value": "900px", "purpose": "Name above intro." },
+      { "name": "nav-sheet", "value": "860px", "purpose": "Full-screen menu replaces the nav links." },
+      { "name": "board-stacked", "value": "680px", "purpose": "Board rows stack project, role and status beside the year." }
+    ],
+    "narrative": {
+      "northStar": "One career, read like a departures board: scannable in a glance, true in every row, and equally at home in Arabic.",
+      "rules": [
+        "Yellow means go somewhere or you are here; never decoration.",
+        "Every lamp carries a written status.",
+        "Real screens only, captured from the owner's software on synthetic data.",
+        "No eyebrows, gradients, glass, pill clouds or scroll reveals."
+      ]
+    }
+  }
+}

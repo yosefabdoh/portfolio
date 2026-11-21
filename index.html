@@ -1,26 +1,42 @@
 <!doctype html>
-<html lang="">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap"
-      rel="stylesheet"
+    <title>Yousef Abdo, full-stack developer in Cairo</title>
+    <meta
+      name="description"
+      content="Yousef Abdo builds bilingual Arabic and English business software with .NET, PostgreSQL, React and Python. CV, project screens and contact."
     />
-    <title>Yousef Abdo - Portfolio</title>
+    <link rel="canonical" href="https://yosefabdoh.com/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <meta name="theme-color" content="#1f2a33" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Yousef Abdo, full-stack developer in Cairo" />
+    <meta
+      property="og:description"
+      content="Bilingual Arabic and English business software, from the .NET API to the React screen. CV and real project screens."
+    />
+    <meta property="og:url" content="https://yosefabdoh.com/" />
+    <meta property="og:image" content="https://yosefabdoh.com/share.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <script>
-      // Prevent flash of wrong theme
+      // Apply the saved theme and language before first paint.
       ;(function () {
-        const saved = localStorage.getItem('darkMode')
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-        if (saved === 'true' || (saved === null && prefersDark)) {
-          document.documentElement.classList.add('dark')
-        } else {
-          document.documentElement.classList.remove('dark')
-        }
+        var root = document.documentElement
+        try {
+          var dark = localStorage.getItem('darkMode')
+          if (dark === 'true' || (dark === null && matchMedia('(prefers-color-scheme: dark)').matches)) {
+            root.classList.add('dark')
+          }
+          var lang = localStorage.getItem('lang')
+          if (!lang && navigator.language && navigator.language.toLowerCase().indexOf('ar') === 0) lang = 'ar'
+          if (lang === 'ar') {
+            root.lang = 'ar'
+            root.dir = 'rtl'
+          }
+        } catch (e) {}
       })()
     </script>
   </head>

@@ -1,70 +1,28 @@
-# yousef-portfolio
+# yosefabdoh.com
 
-This template should help get you started developing with Vue 3 in Vite.
+Personal CV and portfolio of Yousef Abdo, full-stack developer in Cairo. One page in English and
+Arabic (right to left), with screens from real projects and a printable CV.
 
-## Recommended IDE Setup
+## Stack
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Vue 3, Pinia, Vite, Tailwind CSS 4 (reset only; components use scoped CSS), self-hosted Signika and
+Noto Kufi Arabic. Deployed on Vercel.
 
-## Recommended Browser Setup
+## Content
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- All copy lives in `src/locales/en.ts` and `src/locales/ar.ts` (same shape, checked by a test).
+- Project screenshots are in `public/work/`, each as a 2000px and a 1000px WebP. The Ayma ERP and
+  GiftSniper screens were captured from the real frontends running locally on synthetic demo data.
+- The CV PDFs in `public/` are printed from the page itself (see the `@media print` rules). After
+  editing content, rebuild, run `npm run preview`, and print the page to A4 in English and Arabic
+  to refresh `Yousef-Abdo-CV.pdf` and `Yousef-Abdo-CV-ar.pdf`.
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Scripts
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+npm run dev        # local server
+npm run build      # type-check and production build
+npm run test:unit  # Vitest
+npm run lint       # oxlint + ESLint
 ```

@@ -1,230 +1,353 @@
 @import 'tailwindcss';
-@config "../../tailwind.config.js";
 
-@layer base {
-  :root {
-    /* Premium Light Mode Palette */
-    --background: 0 0% 98.5%;
-    --foreground: 224 71.4% 4.1%;
+/*
+  Daylight terminal. Concrete ground, white sign panels, a slate flight board,
+  signal yellow for wayfinding (black on yellow points somewhere, yellow on
+  slate says where you are), status lamps in green, amber and grey.
+*/
+:root {
+  --ground: #e6e7e3;
+  --ground-2: #dcded9;
+  --panel: #ffffff;
+  --panel-2: #f3f4f1;
+  --ink: #1d252c;
+  --ink-2: #4b5660;
+  --line: #c6cac4;
+  --line-strong: #9aa19b;
 
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
+  --board: #1f2a33;
+  --board-row: #25323d;
+  --board-hover: #2d3c48;
+  --board-ink: #f2eee4;
+  --board-ink-2: #a6b1b9;
+  --board-line: #34434f;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
+  --signal: #f5b800;
+  --signal-press: #dca500;
+  --signal-ink: #1d252c;
 
-    --primary: 38 92% 50%; /* Gold/Amber */
-    --primary-foreground: 210 40% 98%;
+  --lamp-go: #3fc27a;
+  --lamp-wait: #f2a33a;
+  --lamp-done: #8b98a2;
+  --text-go: #1c7a49;
 
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
+  --radius: 3px;
+  --wrap: 1180px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
+  --font-latin: 'Signika Variable', 'Segoe UI', system-ui, sans-serif;
+  --font-arabic: 'Noto Kufi Arabic Variable', 'Segoe UI', Tahoma, sans-serif;
 
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
+  color-scheme: light;
+}
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+:root.dark {
+  --ground: #151b20;
+  --ground-2: #1a2127;
+  --panel: #1d252c;
+  --panel-2: #222b33;
+  --ink: #ece9e1;
+  --ink-2: #a9b3ba;
+  --line: #313d47;
+  --line-strong: #4a5864;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 224 71.4% 4.1%;
+  --board: #0f151a;
+  --board-row: #141c22;
+  --board-hover: #1c2730;
+  --board-line: #26323b;
 
-    --radius: 1rem;
-    --card-rgb: 255, 255, 255;
+  --text-go: #5fd394;
 
-    /* Performance Variables */
-    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .dark {
-    /* Premium Dark Mode Colors */
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 40% 98%;
-
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 38 92% 50%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
-    --card-rgb: 15, 23, 42;
-  }
+  color-scheme: dark;
 }
 
 html {
-  @apply scroll-smooth;
-  scroll-padding-top: 2rem;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-latin);
+  font-size: 100%;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+html[lang='ar'] {
+  font-family: var(--font-arabic);
+  line-height: 1.75;
 }
 
 body {
-  @apply bg-background text-foreground antialiased;
-  font-feature-settings:
-    'rlig' 1,
-    'calt' 1;
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'kern' 1;
 }
 
-/* Glassmorphism Utilities */
-.glass-card {
-  @apply backdrop-blur-xl transition-all duration-300;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-  will-change: transform, box-shadow;
-  contain: layout style paint;
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  letter-spacing: -0.01em;
 }
 
-.dark .glass-card {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+p {
+  text-wrap: pretty;
 }
 
-.glass-nav {
-  @apply backdrop-blur-lg transition-all duration-500;
-  background: rgba(255, 255, 255, 0.7);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  will-change: backdrop-filter;
+/* Latin words inside Arabic text keep the Latin face. */
+:lang(ar) [lang='en'] {
+  font-family: var(--font-latin);
 }
 
-.dark .glass-nav {
-  background: rgba(15, 23, 42, 0.7);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+/* Lists of Latin product names inside Arabic text: let each line find its own direction. */
+[dir='rtl'] .bidi-plain {
+  unicode-bidi: plaintext;
+  text-align: right;
 }
 
-/* Modern Floating Navbar */
-.modern-nav {
-  @apply fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl px-6 py-3 rounded-full border-white/40 shadow-xl shadow-primary/5 transition-all duration-500 backdrop-blur-xl;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow:
-    0 8px 32px 0 rgba(31, 38, 135, 0.07),
-    0 20px 25px -5px rgba(0, 0, 0, 0.1);
+.tabular {
+  font-variant-numeric: tabular-nums;
 }
 
-.dark .modern-nav {
-  @apply border-white/5;
-  background: rgba(15, 23, 42, 0.7);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+.wrap {
+  width: 100%;
+  max-width: calc(var(--wrap) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
-/* Scrolled state for navbar */
-.nav-scrolled {
-  @apply top-2 scale-[0.98] py-2 px-6 shadow-2xl;
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 0.5);
+/* Browser surfaces carry the palette too. */
+::selection {
+  background: var(--signal);
+  color: var(--signal-ink);
 }
 
-.dark .nav-scrolled {
-  background: rgba(15, 23, 42, 0.85);
-  border-color: rgba(255, 255, 255, 0.15);
+:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: var(--radius);
 }
 
-/* Mobile Menu Glassmorphism */
-.mobile-menu-glass {
-  @apply backdrop-blur-2xl transition-all duration-300;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
 }
 
-.dark .mobile-menu-glass {
-  background: rgba(15, 23, 42, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+html {
+  scrollbar-color: var(--line-strong) var(--ground);
+  scrollbar-width: thin;
 }
 
-/* Gradient Text Overhaul */
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500;
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
-:root .gradient-text {
-  @apply bg-gradient-to-r from-amber-600 to-orange-700;
+.skip-link {
+  position: absolute;
+  inset-inline-start: 12px;
+  top: -60px;
+  z-index: 100;
+  background: var(--signal);
+  color: var(--signal-ink);
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
 }
 
-/* Theme-aware card hover effects */
-.card-hover:hover {
-  transform: translateY(-5px);
-  @apply shadow-2xl;
+.skip-link:focus {
+  top: 12px;
 }
 
-/* Light Mode Hover */
-:root .card-hover:hover {
-  background: white;
-  box-shadow: 0 20px 40px -10px rgba(38, 92, 50, 0.1);
-  border-color: rgba(38, 92, 50, 0.3);
+/* Signs: the one button system. Yellow points somewhere, outline is the quiet option. */
+.sign {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: var(--radius);
+  border: 1.5px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 160ms var(--ease-out),
+    border-color 160ms var(--ease-out);
 }
 
-/* Dark Mode Hover (Inverted Aesthetic) */
-.dark .card-hover:hover {
-  background: white !important;
-  border-color: white !important;
+.sign svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
 }
 
-/* Force dark text for readability on inverted dark-mode hover */
-.dark .card-hover:hover h3,
-.dark .card-hover:hover p,
-.dark .card-hover:hover span,
-.dark .card-hover:hover li,
-.dark .card-hover:hover .text-muted-foreground,
-.dark .card-hover:hover .text-foreground {
-  color: #0f172a !important;
+.sign:hover {
+  transform: translateY(-1px);
 }
 
-/* Maintain primary color for accents even on hover */
-.dark .card-hover:hover .text-primary {
-  color: hsl(var(--primary)) !important;
+.sign:active {
+  transform: translateY(1px);
 }
 
-/* Performance Optimized Tailwind Components */
-@layer components {
-  .card-hover {
-    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-primary/20;
-    will-change: transform, box-shadow;
+.sign-go {
+  background: var(--signal);
+  color: var(--signal-ink);
+}
+
+.sign-go:hover {
+  background: #ffc61a;
+}
+
+.sign-go:active {
+  background: var(--signal-press);
+}
+
+.sign-quiet {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.sign-quiet:hover {
+  border-color: var(--ink);
+  background: var(--panel);
+}
+
+/* Section headings: a direction tile, then the place name. */
+.section {
+  padding-block: clamp(72px, 10vw, 128px);
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.section-head .tile {
+  display: inline-grid;
+  place-items: center;
+  width: 0.92em;
+  height: 0.92em;
+  flex: none;
+  background: var(--signal);
+  color: var(--signal-ink);
+  border-radius: var(--radius);
+}
+
+.section-head .tile svg {
+  width: 62%;
+  height: 62%;
+}
+
+.section-intro {
+  max-width: 62ch;
+  margin: 0 0 clamp(36px, 5vw, 56px);
+  color: var(--ink-2);
+  font-size: 1.125rem;
+}
+
+.print-only {
+  display: none;
+}
+
+/* The page doubles as the printable CV (and the PDF download is printed from it). */
+@media print {
+  @page {
+    size: A4;
+    margin: 13mm 14mm 14mm;
   }
 
-  .fast-transition {
-    transition-duration: var(--transition-fast);
+  :root,
+  :root.dark {
+    --ground: #fff;
+    --panel: #fff;
+    --ink: #15191d;
+    --ink-2: #4a535b;
+    --line: #d3d6d2;
+    --line-strong: #9aa19b;
+    --text-go: #1c7a49;
+    color-scheme: light;
   }
 
-  .normal-transition {
-    transition-duration: var(--transition-normal);
+  html {
+    font-size: 9.6pt;
+    line-height: 1.45;
+    background: #fff;
+    scroll-padding-top: 0;
   }
 
-  .slow-transition {
-    transition-duration: var(--transition-slow);
+  html[lang='ar'] {
+    line-height: 1.6;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .skip-link,
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .wrap {
+    max-width: none;
+    padding-inline: 0;
+  }
+
+  .section {
+    padding-block: 7mm 0 !important;
+  }
+
+  .section-head {
+    font-size: 14pt;
+    margin-bottom: 2mm;
+    break-after: avoid;
+  }
+
+  .section-head .tile,
+  .section-intro {
+    display: none;
+  }
+
+  a {
+    text-decoration: none;
   }
 }
 
-/* Performance Optimizations */
-@layer utilities {
-  .motion-safe * {
-    animation-duration: inherit !important;
-    transition-duration: inherit !important;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  .motion-reduce * {
-    animation: none !important;
-    transition: none !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -37,8 +37,7 @@ export default defineConfig({
       output: {
         // Split vendor chunks for better caching
         manualChunks: {
-          vendor: ['vue', 'vue-router', 'pinia'],
-          ui: ['@vueuse/motion'],
+          vendor: ['vue', 'pinia'],
         },
         // Optimize chunk naming for better caching
         chunkFileNames: 'assets/js/[name]-[hash].js',
@@ -65,7 +64,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['vue', 'vue-router', 'pinia', '@vueuse/motion'],
+    include: ['vue', 'pinia'],
   },
   server: {
     fs: {
