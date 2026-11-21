@@ -14,7 +14,7 @@
     },
     "typographyMeta": {
       "display": { "displayName": "Display", "purpose": "The name in the hero only." },
-      "headline": { "displayName": "Section heading", "purpose": "One per section, after a yellow direction tile." },
+      "headline": { "displayName": "Section heading", "purpose": "One per section, standing alone." },
       "title": { "displayName": "Case title", "purpose": "Project names in Selected work." },
       "body": { "displayName": "Body", "purpose": "Running text, facts, job points." },
       "body-arabic": { "displayName": "Body (Arabic)", "purpose": "All Arabic text; taller line height, no negative tracking." },

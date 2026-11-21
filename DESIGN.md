@@ -171,7 +171,7 @@ Restrained strategy with one wayfinding color.
 - **Board slate** (#1f2a33) carries the header bar and the board, with **board ink** (#f2eee4)
   warm white type.
 - **Signal yellow** (#f5b800) means "go this way": primary actions, the active view switch,
-  section direction tiles, the contact sign, the focus ring and text selection. Black on yellow
+  the board's hover arrow, the contact sign, the focus ring and text selection. Black on yellow
   points somewhere; yellow on slate says where you are (the board title).
 - **Lamps** report status only: green for live or current, amber for in development, grey for
   completed. Every lamp has a written label.
@@ -221,12 +221,13 @@ rows and flap tiles. Lists are separated by 1px rules under a 2px ink top rule.
 
 ## Components
 
-- **Board**: slate panel, yellow title, Cairo clock, column row, six link rows. Year sits on a
-  split-flap tile (dark card with a hairline across the middle). Hovering a row lightens it and
-  slides in a yellow arrow. Each cell flips in once on load and flips again on language change;
+- **Board**: slate panel, yellow title, Cairo clock, column row, six link rows. On wide screens
+  every cell is its own flat tile with a 3px slate gap (the board's module grid), and the rows
+  run edge to edge on the title rule. Year sits on a split-flap tile (dark card with a hairline
+  across the middle). Hovering a row lightens its tiles and slides a yellow arrow into the end of
+  the Status tile. At 680px and below each row is one tile with year, project, role and status. Each cell flips in once on load and flips again on language change;
   whole words flip, never letters, so Arabic keeps its joined shapes.
 - **Signs** (buttons): `sign-go` yellow, `sign-quiet` outlined. Lift 1px on hover, press 1px down.
-- **Direction tile**: yellow square with a down arrow before each section heading.
 - **View switch**: slate segmented control above a screenshot; the active view is yellow.
 - **Facts list**: definition list with a fixed label column.
 - **Contact sign**: full-width yellow panel with the email set large and three routes below.
@@ -237,6 +238,7 @@ rows and flap tiles. Lists are separated by 1px rules under a 2px ink top rule.
 - Do write every status as a word next to its lamp.
 - Do keep Latin product names readable in Arabic (`unicode-bidi: plaintext` on tech lists, LRM
   before a leading `.NET`).
-- Don't add eyebrows, section numbers, gradient text, glass cards or pill clouds of skills.
+- Don't add eyebrows, section numbers, decorative icon tiles, gradient text, glass cards or pill
+  clouds of skills.
 - Don't put passport, visa or stamp imagery in the travel world.
 - Don't animate sections on scroll; the board flip is the only entrance.
