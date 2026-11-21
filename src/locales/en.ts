@@ -144,6 +144,7 @@ export const en: Content = {
         ],
         links: [],
         viewsLabel: 'Ayma screens',
+        note: 'Local run on demo data',
       },
       {
         id: 'giftsniper',
@@ -180,6 +181,7 @@ export const en: Content = {
         ],
         links: [],
         viewsLabel: 'GiftSniper themes',
+        note: 'Local run on demo data',
       },
       {
         id: 'servicebase',

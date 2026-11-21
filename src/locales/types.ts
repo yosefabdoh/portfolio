@@ -38,6 +38,8 @@ export interface CaseStudy {
   shots: Shot[]
   links: Link[]
   viewsLabel: string
+  /** Shown beside the view switch when the screens use synthetic data. */
+  note?: string
 }
 
 export interface EarlierProject {

@@ -30,6 +30,7 @@ const year = new Date().getFullYear()
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   gap: 8px 24px;
 }
 

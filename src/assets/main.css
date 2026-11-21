@@ -42,20 +42,16 @@
   color-scheme: light;
 }
 
+/* Night terminal: the ground goes dark, the board stays the same slate panel on top of it. */
 :root.dark {
-  --ground: #151b20;
-  --ground-2: #1a2127;
-  --panel: #1d252c;
-  --panel-2: #222b33;
+  --ground: #101417;
+  --ground-2: #14191d;
+  --panel: #161c21;
+  --panel-2: #1b2228;
   --ink: #ece9e1;
   --ink-2: #a9b3ba;
-  --line: #313d47;
-  --line-strong: #4a5864;
-
-  --board: #0f151a;
-  --board-row: #141c22;
-  --board-hover: #1c2730;
-  --board-line: #26323b;
+  --line: #2a343c;
+  --line-strong: #46525c;
 
   --text-go: #5fd394;
 
@@ -234,29 +230,10 @@ html {
 }
 
 .section-head {
-  display: flex;
-  align-items: center;
-  gap: 16px;
   margin: 0 0 12px;
   font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem);
   font-weight: 600;
   line-height: 1.1;
-}
-
-.section-head .tile {
-  display: inline-grid;
-  place-items: center;
-  width: 0.92em;
-  height: 0.92em;
-  flex: none;
-  background: var(--signal);
-  color: var(--signal-ink);
-  border-radius: var(--radius);
-}
-
-.section-head .tile svg {
-  width: 62%;
-  height: 62%;
 }
 
 .section-intro {
@@ -328,7 +305,6 @@ html {
     break-after: avoid;
   }
 
-  .section-head .tile,
   .section-intro {
     display: none;
   }

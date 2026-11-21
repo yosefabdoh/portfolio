@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '@/stores/app'
-import SignIcon from './SignIcon.vue'
 
 const { t } = storeToRefs(useAppStore())
 </script>
@@ -10,7 +9,6 @@ const { t } = storeToRefs(useAppStore())
   <section id="skills" class="section" aria-labelledby="skills-title">
     <div class="wrap">
       <h2 id="skills-title" class="section-head">
-        <span class="tile" aria-hidden="true"><SignIcon name="arrow-down" /></span>
         {{ t.skills.title }}
       </h2>
       <dl class="skills">

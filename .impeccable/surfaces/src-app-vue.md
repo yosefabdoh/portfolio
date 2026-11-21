@@ -27,6 +27,11 @@ FORM: Candidate 6 of 7 (air travel documents), translated: passport and visa mat
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
+## Cited deviations
+
+- Dark theme kept: the original site shipped a light/dark toggle, and a redesign keeps existing function. Dark is a night terminal: the ground goes dark (#101417) while the board keeps its own slate panel (#1f2a33), so the board stays the dominant object.
+- Hero intro is two sentences, placed in the right column beside the name: the second sentence (IT support across Egypt, Saudi Arabia and Yemen) is a hiring fact, and the side-by-side layout keeps all six board rows above the fold at 1440x900.
+
 ## Unresolved
 
 Live deployment happens on merge to the Vercel production branch (not done in this session).

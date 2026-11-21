@@ -11,7 +11,6 @@ const { t } = storeToRefs(useAppStore())
   <section id="work" class="section work" aria-labelledby="work-title">
     <div class="wrap">
       <h2 id="work-title" class="section-head">
-        <span class="tile" aria-hidden="true"><SignIcon name="arrow-down" /></span>
         {{ t.work.title }}
       </h2>
       <p class="section-intro">{{ t.work.intro }}</p>

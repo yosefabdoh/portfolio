@@ -1,4 +1,4 @@
 {
-  "prompt": "Origin: screenshot of the owner's Ayma ERP frontend (private repository), run locally on synthetic demo data; Arabic right-to-left dashboard, 1440x900, 2026-11-21.",
-  "createdAt": "2026-11-21T22:04:07.653Z"
+  "prompt": "Origin: screenshot of the owner's Ayma ERP frontend (private repository), run locally on synthetic demo data; Arabic right-to-left dashboard, 1440x900, 2026-11-21. One-line style fix applied for the capture: the global anchor color rule moved into the base layer so the New invoice button shows its intended white label.",
+  "createdAt": "2026-11-21T22:08:00.163Z"
 }

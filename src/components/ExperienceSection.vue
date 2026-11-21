@@ -10,7 +10,6 @@ const { t } = storeToRefs(useAppStore())
   <section id="experience" class="section exp" aria-labelledby="experience-title">
     <div class="wrap">
       <h2 id="experience-title" class="section-head">
-        <span class="tile" aria-hidden="true"><SignIcon name="arrow-down" /></span>
         {{ t.experience.title }}
       </h2>
 
@@ -170,9 +169,9 @@ const { t } = storeToRefs(useAppStore())
 
 .block-title {
   margin: 0 0 10px;
-  font-size: 1rem;
+  font-size: 1.1875rem;
   font-weight: 600;
-  color: var(--ink-2);
+  color: var(--ink);
 }
 
 .block p {
@@ -263,7 +262,7 @@ const { t } = storeToRefs(useAppStore())
 
   .block-title {
     margin-bottom: 1mm;
-    font-size: 9pt;
+    font-size: 10.5pt;
   }
 
   .inline-link {

@@ -17,6 +17,7 @@ colors:
   board-rule: "#34434f"
   signal-yellow: "#f5b800"
   signal-yellow-press: "#dca500"
+  signal-yellow-hover: "#ffc61a"
   lamp-go: "#3fc27a"
   lamp-wait: "#f2a33a"
   lamp-done: "#8b98a2"
@@ -28,6 +29,12 @@ typography:
     fontWeight: 650
     lineHeight: 0.98
     letterSpacing: "-0.03em"
+  contact-email:
+    fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
+    fontSize: "clamp(1.5rem, 0.7rem + 3.6vw, 3.5rem)"
+    fontWeight: 600
+    lineHeight: 1.1
+    letterSpacing: "-0.02em"
   headline:
     fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
     fontSize: "clamp(2rem, 1.4rem + 2.2vw, 3rem)"
@@ -38,6 +45,41 @@ typography:
     fontSize: "clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem)"
     fontWeight: 600
     lineHeight: 1.15
+  role-line:
+    fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
+    fontSize: "clamp(1.375rem, 1rem + 1.4vw, 2.125rem)"
+    fontWeight: 400
+    lineHeight: 1.2
+  subhead:
+    fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 600
+    lineHeight: 1.2
+  clock:
+    fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
+    fontSize: "1.375rem"
+    fontWeight: 600
+    lineHeight: 1.2
+  board-title:
+    fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
+    fontSize: "clamp(1.125rem, 0.95rem + 0.6vw, 1.375rem)"
+    fontWeight: 600
+    lineHeight: 1.3
+  job-role:
+    fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
+    fontSize: "1.3125rem"
+    fontWeight: 600
+    lineHeight: 1.3
+  lead:
+    fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
+    fontSize: "1.1875rem"
+    fontWeight: 600
+    lineHeight: 1.3
+  intro:
+    fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 400
+    lineHeight: 1.6
   body:
     fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
     fontSize: "1.0625rem"
@@ -48,12 +90,23 @@ typography:
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.75
+  ui:
+    fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 600
+    lineHeight: 1.4
+  small:
+    fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 400
+    lineHeight: 1.4
   label:
     fontFamily: "Signika Variable, Segoe UI, system-ui, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 500
     lineHeight: 1.4
 rounded:
+  bullet: "1px"
   sign: "3px"
   panel: "4px"
   flap: "2px"
@@ -132,8 +185,9 @@ Signika (a wayfinding sans) for Latin and Noto Kufi Arabic for Arabic, both self
 fonts. Latin words inside Arabic keep Signika through `[lang="en"]`. Tabular figures for years,
 the clock and every date column.
 
-Scale: display 92px name, 34px role line, 48px section headings, 40px case titles, 17-18px body,
-14-15px board labels. Headings use balanced wrapping; body measure stays under 64ch. Arabic gets
+Scale (frontmatter has every step): display 92px name, 56px contact email, 48px section headings,
+40px case titles, 34px role line, 24px subheads, 19-22px board and job titles, 18px intros, 17px
+body, 15-16px UI and board cells, 14px labels. Headings use balanced wrapping; body measure stays under 64ch. Arabic gets
 taller line height (1.75) and no negative tracking.
 
 Board cells use sentence case, not airport capitals, and no monospace appears anywhere.

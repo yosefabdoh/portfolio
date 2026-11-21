@@ -194,7 +194,7 @@ const delay = (row: number, col: number) => row * 55 + col * 30
 .stack,
 .role {
   color: var(--board-ink-2);
-  font-size: 0.9688rem;
+  font-size: 0.9375rem;
   line-height: 1.4;
 }
 
@@ -207,7 +207,7 @@ const delay = (row: number, col: number) => row * 55 + col * 30
   align-items: center;
   gap: 10px;
   font-weight: 600;
-  font-size: 0.9688rem;
+  font-size: 0.9375rem;
 }
 
 .lamp {
@@ -250,6 +250,76 @@ const delay = (row: number, col: number) => row * 55 + col * 30
 .row:focus-visible .go {
   opacity: 1;
   transform: none;
+}
+
+/* Wide screens: every cell is its own flat tile on the slate, like a real board's modules. */
+@media screen and (min-width: 681px) {
+  .row {
+    gap: 3px;
+    min-height: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  .row:hover {
+    background: transparent;
+  }
+
+  .row > * {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    min-width: 0;
+    min-height: 52px;
+    padding: 6px 14px;
+    background: var(--board-row);
+    border-radius: 2px;
+    transition: background-color 160ms var(--ease-out);
+  }
+
+  .row:hover > *:not(.year):not(.go) {
+    background: var(--board-hover);
+  }
+
+  .row > .year {
+    justify-content: center;
+    justify-self: stretch;
+    padding: 6px 8px;
+    background:
+      linear-gradient(
+        to bottom,
+        transparent calc(50% - 0.5px),
+        rgb(0 0 0 / 0.55) calc(50% - 0.5px),
+        rgb(0 0 0 / 0.55) calc(50% + 0.5px),
+        transparent calc(50% + 0.5px)
+      ),
+      #0b1014;
+  }
+
+  .row > .go {
+    padding: 0;
+    background: transparent;
+    justify-content: center;
+  }
+
+  .row :deep(.flap) {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cols {
+    gap: 3px;
+    padding: 10px 0;
+  }
+
+  .cols span {
+    padding-inline: 14px;
+  }
+
+  .cols span:first-child {
+    padding-inline: 8px;
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 980px) {

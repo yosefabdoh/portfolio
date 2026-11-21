@@ -50,19 +50,22 @@ const srcset = (file: string) => `/work/${file}-1000.webp 1000w, /work/${file}.w
     </header>
 
     <figure class="screen">
-      <div v-if="item.shots.length > 1" class="views" role="group" :aria-label="item.viewsLabel">
-        <button
-          v-for="(s, i) in item.shots"
-          :key="s.file"
-          type="button"
-          class="view"
-          :class="{ on: i === active }"
-          :aria-pressed="i === active"
-          :lang="/[؀-ۿ]/.test(s.tab) ? 'ar' : 'en'"
-          @click="active = i"
-        >
-          {{ s.tab }}
-        </button>
+      <div v-if="item.shots.length > 1 || item.note" class="screen-bar">
+        <div v-if="item.shots.length > 1" class="views" role="group" :aria-label="item.viewsLabel">
+          <button
+            v-for="(s, i) in item.shots"
+            :key="s.file"
+            type="button"
+            class="view"
+            :class="{ on: i === active }"
+            :aria-pressed="i === active"
+            :lang="/[؀-ۿ]/.test(s.tab) ? 'ar' : 'en'"
+            @click="active = i"
+          >
+            {{ s.tab }}
+          </button>
+        </div>
+        <p v-if="item.note" class="note">{{ item.note }}</p>
       </div>
       <a class="frame" :href="src(shot.file)" target="_blank" rel="noopener" :title="openFull">
         <Transition name="swap" mode="out-in">
@@ -136,11 +139,25 @@ const srcset = (file: string) => `/work/${file}-1000.webp 1000w, /work/${file}.w
   margin: 0;
 }
 
+.screen-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 10px;
+}
+
+.note {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+}
+
 .views {
   display: inline-flex;
   gap: 2px;
   padding: 3px;
-  margin-bottom: 10px;
   background: var(--board);
   border-radius: 4px;
 }
